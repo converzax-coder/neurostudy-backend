@@ -10,7 +10,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Backend funcionando");
 });
-
 app.post("/api/estudiar", (req, res) => {
   const { text, mode } = req.body;
 
@@ -19,16 +18,15 @@ app.post("/api/estudiar", (req, res) => {
   if (mode === "facil") {
     resultado = "Resumen fácil:\n" + text.slice(0, 300);
   } else if (mode === "tdah") {
-    resultado = "Pasos cortos:\n1. Lee el texto por partes.\n2. Subraya la idea principal.\n3. Resume en una frase.\n\nTexto base:\n" + text.slice(0, 200);
+    resultado = "Pasos cortos:\n1. Lee el texto\n2. Identifica ideas clave\n3. Resume\n\nTexto:\n" + text.slice(0, 200);
   } else if (mode === "examen") {
-    resultado = "Preguntas tipo examen:\n1. ¿Cuál es la idea principal?\n2. ¿Qué conceptos aparecen?\n3. ¿Qué conclusión puedes sacar?";
+    resultado = "Preguntas tipo examen:\n1. ¿Cuál es la idea principal?\n2. ¿Qué conceptos aparecen?\n3. ¿Qué conclusión hay?";
   } else {
     resultado = "Contenido procesado:\n" + text.slice(0, 300);
   }
 
   res.json({
     result: resultado
-  });
   });
 });
 
